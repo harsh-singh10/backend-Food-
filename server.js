@@ -3,8 +3,10 @@ import cors from "cors"
 import connectDB from "./config/db.js";
 import dotenv from "dotenv"
 
-// env config
 
+import foodRouter from "./routes/foodRoute.js";
+
+// env config
 dotenv.config();
 
 // app 
@@ -32,3 +34,12 @@ connectDB()
 .catch( (err)=>{
         console.log("MONGO db connection fails !!!");
 } )
+
+
+
+// API end points 
+
+
+app.use("/api/food",foodRouter)
+// for using these images on frontend 
+app.use("/images" ,express.static('upload'))

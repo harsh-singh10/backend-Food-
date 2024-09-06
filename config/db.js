@@ -7,7 +7,7 @@ const connectDB =  async ()=>{
 
     try {
     //    const connectionInstance = await mongoose.connect(`mongodb+srv://harshditu:harsh1010@cluster0.0oc99.mongodb.net/food del`);
-        const connectionInstance = await mongoose.connect(`${process.env.MONGODB_URI}/food del`);
+        const connectionInstance = await mongoose.connect(`${process.env.MONGODB_URI}/FoodTest`);
 
        
        console.log(`\n Database connected you made it !! ${connectionInstance.connection.host} `);
