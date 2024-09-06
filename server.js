@@ -1,10 +1,15 @@
 import express from "express"
 import cors from "cors"
+import connectDB from "./config/db.js";
+import dotenv from "dotenv"
 
+// env config
+
+dotenv.config();
 
 // app 
 const app = express();
-const port = 4000
+const PORT = process.env.PORT
 
 // middleware
 app.use(express.json())
@@ -15,8 +20,15 @@ app.get("/" , (req,res)=>{
     res.send("Server is Working")
 })
 
+// databse connection 
 
-app.listen(port,()=>{
-    console.log(`server is running on port no ${port} ` );
-    
-})
+
+connectDB()
+.then( ()=>{
+    app.listen(process.env.PORT || 4000 , ()=>{
+        console.log(`Server is listning on port no ${PORT} `);
+    })
+} )
+.catch( (err)=>{
+        console.log("MONGO db connection fails !!!");
+} )
