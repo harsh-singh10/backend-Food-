@@ -5,6 +5,8 @@ import dotenv from "dotenv"
 
 
 import foodRouter from "./routes/foodRoute.js";
+import userRoute from "./routes/userRoute.js";
+import cartRouter from "./routes/cartRoute.js";
 
 // env config
 dotenv.config();
@@ -43,3 +45,10 @@ connectDB()
 app.use("/api/food",foodRouter)
 // for using these images on frontend 
 app.use("/images" ,express.static('upload'))
+
+
+// for user 
+app.use("/api/user",userRoute)
+
+// cart 
+app.use("/api/cart" , cartRouter)
