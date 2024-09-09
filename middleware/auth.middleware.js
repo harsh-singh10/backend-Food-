@@ -12,7 +12,7 @@ const authMiddleware = async(req,res,next)=>{
         next();
     } catch (error) {
         console.log("errt" . error);
-        res.json({success:false,message:"error while decording token"})
+        res.json({success:false,message:"you must login first"})
         
     }
 }

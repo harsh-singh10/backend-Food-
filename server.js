@@ -7,6 +7,7 @@ import dotenv from "dotenv"
 import foodRouter from "./routes/foodRoute.js";
 import userRoute from "./routes/userRoute.js";
 import cartRouter from "./routes/cartRoute.js";
+import orderRoute from "./routes/orderRoute.js";
 
 // env config
 dotenv.config();
@@ -52,3 +53,6 @@ app.use("/api/user",userRoute)
 
 // cart 
 app.use("/api/cart" , cartRouter)
+
+// 
+app.use("/api/order",orderRoute)
