@@ -56,7 +56,7 @@ const getCart = async (req,res)=>{
             // get userdata 
             let userData = await userModel.findById(req.body.userId);
             // cart data 
-            let cartData = await userData.cartData;
+            let cartData = await userData.cartData || {};
             //send response 
             res.json({success:true, cartData})
         } catch (error) {
