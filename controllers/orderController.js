@@ -62,7 +62,11 @@ const listOrder = async (req,res)=>{
 const updateStatus = async(req,res)=>{
 
     try {
-        await orderModel.findByIdAndUpdate(req.body.orderId,{status:req.body.status})
+       const status = req.body.status;
+        if(status == "Delivered"){
+            await orderModel.findByIdAndUpdate(req.body.orderId , {payment:true})
+        }
+        await orderModel.findByIdAndUpdate(req.body.orderId,{status})
         res.json({success:true,message:"Status updated"})
     } catch (error) {
         console.log("error while updating status " , error);
@@ -71,6 +75,8 @@ const updateStatus = async(req,res)=>{
     }
 
 }
+
+
 
 
 export {placeOrder , userOrder , listOrder , updateStatus}
